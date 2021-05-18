@@ -5,10 +5,7 @@ import com.example.demo.mapper.HelloMapper;
 import com.example.demo.response.HelloResponse;
 import com.example.demo.service.HelloWorldServiceImpl;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -21,6 +18,13 @@ public class HelloWorldController {
     @GetMapping
     public HelloResponse helloWorld(@RequestBody HelloData helloData) {
         return helloMapper.dataToResponse(helloWorldServiceImpl.sayHello(helloData));
+    }
+
+    @PostMapping
+    public HelloResponse createHello(@RequestBody HelloData helloData) {
+        return helloMapper.entityToResponse(
+                helloWorldServiceImpl.createHello(helloData)
+        );
     }
 
 }
