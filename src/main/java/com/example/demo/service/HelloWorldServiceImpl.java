@@ -24,4 +24,10 @@ public class HelloWorldServiceImpl implements HelloWorldService {
         return helloRepository.save(helloMapper.dataToEntity(helloData));
     }
 
+    @Override
+    public HelloEntity getById(Integer id) {
+        return helloRepository.findById(id)
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
 }

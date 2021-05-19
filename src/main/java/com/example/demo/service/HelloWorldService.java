@@ -9,4 +9,6 @@ public interface HelloWorldService {
 
     public HelloEntity createHello(HelloData helloData);
 
+    public HelloEntity getById(Integer id);
+
 }
